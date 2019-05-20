@@ -44,3 +44,32 @@ function mon_premier_plugin_register_shortcode() {
     add_shortcode( 'yoda', 'mon_premier_plugin_yoda_shortcode' );
 }
 add_action( 'init', 'mon_premier_plugin_register_shortcode' );
+
+/**
+ * Shortcode qui retourne le célèbre "Luke, Je sui ton père !" dans un élément blockquote.
+ * Le contenu du shortcode sera utilisé pour remplacer 'Luke'
+ *
+ * Exemples :
+ * [vador] => <blockquote>Luke, Je sui ton père !</blockquote>
+ * [vador]Serge[/vador] => <blockquote>Serge, Je sui ton père !</blockquote>
+ */
+
+function mon_premier_plugin_vador_shortcode($atts, $content = "") {
+    //Si contenu vide
+    if (empty( $content )) {
+        $content = 'Luke';
+    }
+    return "<blockquote>" . $content . ", Je suis ton père !</blockquote>";
+}
+
+//Fonction de rappel qui retourne la célèbre citation de maître Yoda
+function mon_premier_plugin_yoda_shortcode() {
+    return "<blockquote>Que la force soit avec toi jeune padawan !</blockquote>";
+}
+
+//Enregistre les shortcodes du plugin
+function mon_premier_plugin_register_shortcode() {
+    add_shortcode( 'yoda', 'mon_premier_plugin_yoda_shortcode' );
+    add_shortcode( 'vador', 'mon_premier_plugin_vador_shortcode' );
+}
+add_action( 'init', 'mon_premier_plugin_register_shortcode' );
