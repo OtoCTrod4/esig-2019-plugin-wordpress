@@ -23,3 +23,13 @@ function mon_premier_plugin_post_delete_mail($post_id) {
 }
 //Ajout d'une action sur 'delete_post' qui appellera mon_premier_plugin_post_delete_mail()
 add_action('delete_post', 'mon_premier_plugin_post_delete_mail');
+
+//Fonction qui remplace la chaine 'et' par '&amp;'
+function mon_premier_plugin_the_title( $title ) {
+    //Remplace 'et' dans le titre
+    $title = str_replace( 'et', '&amp;', $title );
+    //Retourne le titre modifié
+    return $title;
+}
+//Ajout d'un filtre sur 'the_title' qui appellera mon_premier_plugin_the_title()
+add_filter( 'the_title', 'mon_premier_plugin_the_title' );
