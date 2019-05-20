@@ -54,7 +54,7 @@ add_action( 'init', 'mon_premier_plugin_register_shortcode' );*/
  * [vador]Serge[/vador] => <blockquote>Serge, Je sui ton père !</blockquote>
  */
 
-function mon_premier_plugin_vador_shortcode($atts, $content = "") {
+/*function mon_premier_plugin_vador_shortcode($atts, $content = "") {
     //Si contenu vide
     if (empty( $content )) {
         $content = 'Luke';
@@ -72,4 +72,32 @@ function mon_premier_plugin_register_shortcode() {
     add_shortcode( 'yoda', 'mon_premier_plugin_yoda_shortcode' );
     add_shortcode( 'vador', 'mon_premier_plugin_vador_shortcode' );
 }
-add_action( 'init', 'mon_premier_plugin_register_shortcode' );
+add_action( 'init', 'mon_premier_plugin_register_shortcode' );*/
+
+/**
+ * Shortcode qui retourne le célèbre "Luke, Je sui ton père !" dans un élément blockquote.
+ * Le contenu du shortcode sera utilisé pour remplacer 'Luke'
+ * L'attribut tag du shortcode permet de remplacer l'élément blockquote par : p, h1, h2 ou div
+ *
+ * Exemples :
+ * [vador] => <blockquote>Luke, Je sui ton père !</blockquote>
+ * [vador]Serge[/vador] => <blockquote>Serge, Je sui ton père !</blockquote>
+ * [vador tag="div"]Jean-Marc[/vador] => <div>Jean-Marc, Je sui ton père !</div>
+ */
+
+function mon_premier_plugin_vador_shortcode($atts, $content = "") {
+    // Tag par défaut
+    $tag = 'blockquote';
+
+    // Si $tag valide on le récupère
+    if(isset($atts['tag']) AND in_array($atts['tag'], ['p','h1','h2','div'])) {
+        $tag = $atts['tag'];
+    }
+
+    // Si contenu vide
+    if (empty( $content )) {
+        $content = 'Luke';
+    }
+
+    return '<' . $tag . '>' . $content . ', Je suis ton père !' . '';
+}
