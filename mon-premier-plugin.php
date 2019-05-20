@@ -1,7 +1,7 @@
 <?php
-/**
-Plugin Name: Mon premier plugin
- */
+/*
+Plugin Name: Mon Premier Plugin
+*/
 
 //Fonction qui envoie par email les infos d'un email supprimé
 function mon_plugin_post_delete_mail($post_id) {
