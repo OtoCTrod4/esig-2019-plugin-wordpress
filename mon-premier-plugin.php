@@ -101,3 +101,10 @@ function mon_premier_plugin_vador_shortcode($atts, $content = "") {
 
     return '<' . $tag . '>' . $content . ', Je suis ton père !' . '';
 }
+
+/Enregistre les shortcodes du plugin
+function mon_premier_plugin_register_shortcode() {
+    add_shortcode( 'yoda', 'mon_premier_plugin_yoda_shortcode' );
+    add_shortcode( 'vador', 'mon_premier_plugin_vador_shortcode' );
+}
+add_action( 'init', 'mon_premier_plugin_register_shortcode' );
