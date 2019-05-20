@@ -112,3 +112,8 @@ add_action( 'init', 'mon_premier_plugin_register_shortcode' );
 
 echo do_shortcode('Exemple de shortcode : [yoda]');
 //Exemple de shotcode <blockquote>Que la force soit avec toi jeune padawan !</blockquote>
+
+//Fonction qui retourne le résultat d'un shortcode dans un élément strong
+function mon_premier_plugin_strong_shortcode() {
+    return '<strong>' . do_shortcode($content ) . '</strong>';
+}
